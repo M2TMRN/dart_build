@@ -1,12 +1,9 @@
 # Code generation with Dart build system
 This project should show how to work with some features of Dart build system that can reduce boilerplate code.<br/>
-Featured packages:<br/>
-0. build_runner
-1. build_version;
-2. json_serializable;
-3.
-4.
-5. 
+Featured packages:
+1. build_runner;
+2. build_version;
+3. json_serializable.
 
 ## Getting Started
 [Base source: Kevin Moore](https://www.youtube.com/watch?v=iVoz7kJoLFQ)
@@ -29,7 +26,7 @@ dev_dependencies:
 ``` shell script  
 pub run build_runner <command>
 ```
-Where commands are ```build```, ```watch```, ```serve```, ```test```. Check out [source](https://pub.dev/packages/build_runner).<br/>
+Where commands are ```build```, ```watch```, ```serve``` and ```test```. Check out [source](https://pub.dev/packages/build_runner).<br/>
 
 If build_runner file not found: 
  1. Be sure that you are in correct folder (where pubspec.yaml is);
@@ -40,7 +37,7 @@ flutter pub get
 flutter packages get
 flutter packages pub run build_runner build
 ```
- [source](https://github.com/dart-lang/build/issues/2581)
+[Source: github issue](https://github.com/dart-lang/build/issues/2581)
 
 ## Build version
 Include version of your package in source code. <br/>
@@ -54,19 +51,19 @@ build_version: ^2.0.1 # has builder inside
 version: 0.1.2-dev
 ```
 
-* Run to generate and update version
+* Run to generate and update version:
 ``` shell script
 flutter packages pub run build_runner watch
 ```
-Generates and later updates src/version.dart from version in pubspec.yaml file. Version is updated every time it is changed in pubspec.yaml, while watch is on.
+Generates and later updates _src/version.dart_ from version in _pubspec.yaml_ file. Version is updated every time it is changed in _pubspec.yaml_, while _watch_ is on.
 
 
 **Cancel watch.**
 
 ### JSON handling
-* Add src/customer.dart
+* Add _src/customer.dart_
 
-* Update pubspec.yaml
+* Update _pubspec.yaml_
 ```
 dependencies:
     json_annotation: ^3.1.1
@@ -78,8 +75,9 @@ dev_dependencies:
 ``` shell script
 flutter packages pub run build_runner watch
 ```
-* Json mapper class is generated at src/customer.g.dart
+* Json mapper class is generated at _src/customer.g.dart_
 
 All Json serializable fields are configured in pubspec.yaml. Some, but not all are by default true, but you can change that. Check out keys for the options at
 [More details on json_serializable](https://pub.dev/packages/json_serializable)
-  
+
+At the moment it is not possible to change destination path automatically, so unless you want source code to became dirty fast, you can move it manually.  
