@@ -1,7 +1,7 @@
-#Code generation with Dart build system
+# Code generation with Dart build system
 
 ## Getting Started
-[source: Kevin Moore](https://www.youtube.com/watch?v=iVoz7kJoLFQ)
+[Base source: Kevin Moore](https://www.youtube.com/watch?v=iVoz7kJoLFQ)
 
 ## Initial pubspec.yaml
 ```
@@ -22,7 +22,7 @@ dev_dependencies:
 ## Build version
 Add dev dependency:
 ```
-  build_version: ^2.0.1 # has builder inside
+build_version: ^2.0.1 # has builder inside
 ```
 
 ``` shell script  
@@ -30,10 +30,9 @@ pub run build_runner
 ```
 
 If build_runner file not found try [source](https://github.com/dart-lang/build/issues/2581): 
- 1.  be sure that you are in correct folder, (where pubspec.yaml is);
+ 1. Be sure that you are in correct folder (where pubspec.yaml is);
  2. Use following commands instead of the above
 
-### Version handling
 * Run at the start to generate version
 ``` shell script
 flutter pub get
@@ -45,14 +44,13 @@ flutter packages pub run build_runner build
 ``` shell script
 flutter packages pub run build_runner watch
 ```
-** Generates and later updates version file from version in pubspec.yaml file. Version is updated every time it is changed in pubspec.yaml, while watch is not canceled.
-src/version.dart
+    * Generates and later updates src/version.dart from version in pubspec.yaml file. Version is updated every time it is changed in pubspec.yaml, while watch is on.
 
-Cancel watch.
+
+** Cancel watch. **
 
 ### JSON handling
-* Add this class
-src/customer.dart
+* Add src/customer.dart
 
 * Update pubspec.yaml
 ```
@@ -66,8 +64,7 @@ dev_dependencies:
 ``` shell script
 flutter packages pub run build_runner watch
 ```
-* Json mapper class is generated 
-src/customer.g.dart
+* Json mapper class is generated as src/customer.g.dart
 
 [More details on json_serializable](https://pub.dev/packages/json_serializable)
   
