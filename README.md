@@ -44,7 +44,7 @@ flutter packages pub run build_runner build
 ``` shell script
 flutter packages pub run build_runner watch
 ```
-    * Generates and later updates src/version.dart from version in pubspec.yaml file. Version is updated every time it is changed in pubspec.yaml, while watch is on.
+Generates and later updates src/version.dart from version in pubspec.yaml file. Version is updated every time it is changed in pubspec.yaml, while watch is on.
 
 
 ** Cancel watch. **
