@@ -40,7 +40,7 @@ flutter packages pub run build_runner build
 [Source: github issue](https://github.com/dart-lang/build/issues/2581)
 
 ## Build version
-Include version of your package in source code. <br/>
+Include version of your package in the source code. <br/>
 
 * Add dev dependency:
 ```
@@ -77,7 +77,9 @@ flutter packages pub run build_runner watch
 ```
 * Json mapper class is generated at _src/customer.g.dart_
 
-All Json serializable fields are configured in pubspec.yaml. Some, but not all are by default true, but you can change that. Check out keys for the options at
-[More details on json_serializable](https://pub.dev/packages/json_serializable)
+All Json serializable fields are configured in pubspec.yaml. Some, but not all are by default true. If such is your desire you can change that. Check out keys for the options at
+[more details on json_serializable](https://pub.dev/packages/json_serializable). There are two abse ways to handle options.
+1. Checkout _build.yaml_ for one example of changed option. Notice how _customer.g.dart_ changes based on that value (look at the map check :wink:). 
+2. Checkout condition inside JsonSerializable. _last_ is not generated since it is not annotated.
 
-At the moment it is not possible to change destination path automatically, so unless you want source code to became dirty fast, you can move it manually.  
+At the moment(1. January 2020) it is not possible to change destination path automatically. Therefore unless you want source code to became dirty fast, you can move generated files manually, but pay attention to watch.  

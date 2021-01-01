@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          nullable: false # Json serializable for customer does not check anymore are friends null. It assumes they are never null
