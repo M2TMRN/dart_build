@@ -3,7 +3,10 @@ This project should show how to work with some features of Dart build system tha
 Featured packages:
 1. build_runner;
 2. build_version;
-3. json_serializable.
+3. json_serializable, json_annotation;
+4. checked_yaml;
+5. build_cli;
+6. build_verify
 
 ## Getting Started
 [Base source: Kevin Moore](https://www.youtube.com/watch?v=iVoz7kJoLFQ)
@@ -68,8 +71,9 @@ Generates and later updates _src/version.dart_ from version in _pubspec.yaml_ fi
 dependencies:
     json_annotation: ^3.1.1
 dev_dependencies:
-    json_serializable: ^3.5.1
+    json_serializable: ^3.5.1 # defined in json_annotation package
 ```
+Pay attention that json_annotation is package that contains json_serializable. And since we only need json_serializable we put it in dev_dependencies.
 
 * Run to generate json mapper
 ``` shell script
@@ -83,3 +87,19 @@ All Json serializable fields are configured in pubspec.yaml. Some, but not all a
 2. Checkout condition inside JsonSerializable. _last_ is not generated since it is not annotated.
 
 At the moment(1. January 2020) it is not possible to change destination path automatically. Therefore unless you want source code to became dirty fast, you can move generated files manually, but pay attention to watch.  
+
+# Under construction
+
+## Other builders
+1. built_value 
+    [David Morgan](https://medium.com/dartlang/darts-built-value-for-immutable-object-models-83e2497922d4)
+    [pub](https://pub.dev/packages/built_value)
+2. build_collection
+    [David Morgan](https://medium.com/dartlang/darts-built-collection-for-immutable-collections-db662f705eff)
+    [pub](https://pub.dev/packages/built_collection)
+
+
+
+## checked_yaml
+
+
