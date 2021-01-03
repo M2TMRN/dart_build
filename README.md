@@ -106,7 +106,7 @@ built_value contains among others
 
 
 
-## Checking yaml
+## Checking YAML
 This package
 ```
 dependencies:
@@ -120,9 +120,14 @@ Pay attention to the _main.dart_. and run following command
 dart bin/main.dart pubspec.yaml
 ```
 This command will run _main_ with argument _pubspec.yaml_. It will read file and check keys of yaml 
-against available keys in Configuration, based on requirements. For this parameter execution will throw exception since the keys from yaml do not exist.
+against available keys in _Configuration_, based on requirements. For this parameter execution will throw exception since the keys from yaml do not exist.
 but if we pass _sample.yaml_ it will pass the check and return nice JSON description.
-Changing _42_ in _sample.yaml_ tp _"42"_ will throw error upon execution of previous command.
+Changing _42_ in _sample.yaml_ t0 _"42"_ will throw error upon execution of previous command.
 
 
-# build_cli
+# Parsing command line arguments
+
+```
+dependencies:
+  build_cli: ^1.3.10
+```
