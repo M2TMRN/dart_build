@@ -23,7 +23,6 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 dev_dependencies:
     build_runner: ^1.10.11 # does the work
-    pedantic: ^1.8.0 # lint analysis
 ```
 
 ``` shell script  
@@ -58,7 +57,8 @@ version: 0.1.2-dev
 ``` shell script
 flutter packages pub run build_runner watch
 ```
-Generates and later updates _src/version.dart_ from version in _pubspec.yaml_ file. Version is updated every time it is changed in _pubspec.yaml_, while _watch_ is on.
+Generates and later updates _src/version.dart_ from version in _pubspec.yaml_ file. 
+Version is updated every time it is changed in _pubspec.yaml_, while _watch_ is on.
 
 
 **Cancel watch.**
@@ -81,25 +81,48 @@ flutter packages pub run build_runner watch
 ```
 * Json mapper class is generated at _src/customer.g.dart_
 
-All Json serializable fields are configured in pubspec.yaml. Some, but not all are by default true. If such is your desire you can change that. Check out keys for the options at
+All Json serializable fields are configured in pubspec.yaml. Some, but not all are by default true. If such is your desire you can change that. 
+Check out keys for the options at
 [more details on json_serializable](https://pub.dev/packages/json_serializable). There are two abse ways to handle options.
 1. Checkout _build.yaml_ for one example of changed option. Notice how _customer.g.dart_ changes based on that value (look at the map check :wink:). 
 2. Checkout condition inside JsonSerializable. _last_ is not generated since it is not annotated.
 
-At the moment(1. January 2020) it is not possible to change destination path automatically. Therefore unless you want source code to became dirty fast, you can move generated files manually, but pay attention to watch.  
+At the moment(1. January 2020) it is not possible to change destination path automatically. 
+Therefore unless you want source code to became dirty fast, you can move generated files manually, but pay attention to watch.  
 
 # Under construction
 
 ## Other builders
-1. built_value 
+built_runner contains among others
+* built_value - provides Immutable value types, enums, JSON serialization
     [David Morgan](https://medium.com/dartlang/darts-built-value-for-immutable-object-models-83e2497922d4)
     [pub](https://pub.dev/packages/built_value)
-2. build_collection
+* pedantic - provides lint analysis
+
+built_value contains among others
+* build_collection - provides immutable collections
     [David Morgan](https://medium.com/dartlang/darts-built-collection-for-immutable-collections-db662f705eff)
     [pub](https://pub.dev/packages/built_collection)
 
 
 
-## checked_yaml
+## Checking yaml
+This package
+```
+dependencies:
+  checked_yaml: ^1.0.4
+```
+provides _checkedYamlDecode_ function which can provide helpful exception between yaml and target type. 
+It is based on _json_serializable_ annotation of a class and its elements. <br/>
+Pay attention to the _main.dart_. and run following command 
+
+``` shell script
+dart bin/main.dart pubspec.yaml
+```
+This command will run _main_ with argument _pubspec.yaml_. It will read file and check keys of yaml 
+against available keys in Configuration, based on requirements. For this parameter execution will throw exception since the keys from yaml do not exist.
+but if we pass _sample.yaml_ it will pass the check and return nice JSON description.
+Changing _42_ in _sample.yaml_ tp _"42"_ will throw error upon execution of previous command.
 
 
+# build_cli
