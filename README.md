@@ -1,5 +1,7 @@
 # Code generation with Dart build system
 This project should show how to work with some features of Dart build system that can reduce boilerplate code.<br/>
+We will create builder in our package.
+
 Featured packages:
 1. build_runner;
 2. build_version;
@@ -270,6 +272,32 @@ Packages in configured in such a way that we can get both _yaml_ and _cli_ _Conf
 [Peanut](https://pub.dev/packages/peanut)
 
 
+# Verify build
+Tester for ensuring generated Dart code is working in case of version change.
+
+First we add following dependency
+```yaml
+dev_dependencies:
+  build_verify: ^1.1.1
+```
+And then create new class _test/ensure_build_test.dart_ and annotate it with
+
+```dart
+@Tags(['presubmit-only'])
+```
+from _test_ package. This _@Tags_ annotation will apply user defined tags. That tag is defined in _dart_test_ that is used by [Travis](#travis).
+
+
+Following piece of code ensures that build does not change anything that it is hermetic.
+```dart
+void main(){
+  test('ensure_build', expectBuildClean);
+}
+```
+
+
+
+# <a href="travis">Travis</a>
 
 
 
