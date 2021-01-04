@@ -265,7 +265,7 @@ It will call _usage_ related function that prints help messages. We can test thi
 # Build dart web application
 
 Package that does work in relation to building Flutter app. It builds it into another branch. 
-Packages in configured in such a way that we can get both yaml and cli Configuration object.
+Packages in configured in such a way that we can get both _yaml_ and _cli_ _Configuration_ object.
 
 [Peanut](https://pub.dev/packages/peanut)
 
