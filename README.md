@@ -280,13 +280,7 @@ First we add following dependency
 dev_dependencies:
   build_verify: ^1.1.1
 ```
-And then create new class _test/ensure_build_test.dart_ and annotate it with
-
-```dart
-@Tags(['presubmit-only'])
-```
-from _test_ package. This _@Tags_ annotation will apply user defined tags. That tag is defined in _dart_test_ that is used by [Travis](#travis).
-
+And then create new class _test/ensure_build_test.dart_
 
 Following piece of code ensures that build does not change anything that it is hermetic.
 ```dart
@@ -296,8 +290,50 @@ void main(){
 ```
 
 
+# Travis
 
-# <a href="travis">Travis</a>
+As a continuous integration platform, Travis CI supports your development process by automatically building 
+and testing code changes, providing immediate feedback on the success of the change. 
+Travis CI can also automate other parts of your development process by managing deployments and notifications.
+When you run a build, Travis CI clones your GitHub repository into a brand-new virtual environment, and carries out a series of tasks to build and test your code. 
+If one or more of those tasks fail, the build is considered broken. 
+If none of the tasks fail, the build is considered passed and Travis CI can deploy your code to a web server or application host.
+
+
+Annotate _test/ensure_build_test.dart_ with
+```dart
+@Tags(['presubmit-only'])
+```
+from _test_ package. This _@Tags_ annotation will apply user defined tags. That tag is defined in _dart_test.yaml_ 
+
+```yaml
+tags:
+  presubmit-only:
+    skip: "Should only be run during pre-submit"
+```
+
+that is used by _.travis.yaml_
+
+```yaml
+language: dart
+
+dart:
+  - 2.6.0
+  - dev
+
+matrix:
+  - dart: dev
+    dart_task:
+      test: --run-skipped -t presubmit-only
+
+branches:
+  only: [master]
+
+cache:
+  directories:
+    - $HOME/.pub-cache
+    - .dart_tool/
+```
 
 
 

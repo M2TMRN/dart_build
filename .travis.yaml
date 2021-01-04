@@ -1,0 +1,18 @@
+language: dart
+
+dart:
+  - 2.6.0
+  - dev
+
+matrix:
+  - dart: dev
+    dart_task:
+      test: --run-skipped -t presubmit-only
+
+branches:
+  only: [master]
+
+cache:
+  directories:
+    - $HOME/.pub-cache
+    - .dart_tool/
