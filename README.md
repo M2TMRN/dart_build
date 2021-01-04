@@ -65,7 +65,7 @@ Version is updated every time it is changed in _pubspec.yaml_, while _watch_ is 
 
 **Cancel watch.**
 
-### JSON handling
+## JSON handling
 * Add _src/customer.dart_
 
 * Update _pubspec.yaml_
@@ -91,8 +91,6 @@ Check out keys for the options at
 
 At the moment(1. January 2020) it is not possible to change destination path automatically. 
 Therefore unless you want source code to became dirty fast, you can move generated files manually, but pay attention to watch.  
-
-# Under construction
 
 ## Other builders
 built_runner contains among others
@@ -182,7 +180,6 @@ void main(List<String> arguments) {
   print(config);
 
 }
-
 ```
 
 
@@ -204,7 +201,7 @@ Changing _42_ in _sample.yaml_ to _"42"_ will throw error upon execution of prev
 since the type is not correct upon check.
 
 
-# Parsing command line arguments
+## Parsing command line arguments
 
 Using Dart Built System, more specifically _build_cli_, we will parse command line arguments directly into  an annotation class.
 
@@ -264,7 +261,7 @@ It will call _usage_ related function that prints help messages. We can test thi
   dart bin/main.dart --help
 ```
 
-# Build dart web application
+## Build dart web application
 
 Package that does work in relation to building Flutter app. It builds it into another branch. 
 Packages in configured in such a way that we can get both _yaml_ and _cli_ _Configuration_ object.
@@ -272,7 +269,7 @@ Packages in configured in such a way that we can get both _yaml_ and _cli_ _Conf
 [Peanut](https://pub.dev/packages/peanut)
 
 
-# Verify build
+## Verify build
 Tester for ensuring generated Dart code is working in case of version change.
 
 First we add following dependency
@@ -290,7 +287,7 @@ void main(){
 ```
 
 
-# Travis
+### Travis
 
 As a continuous integration platform, Travis CI supports your development process by automatically building 
 and testing code changes, providing immediate feedback on the success of the change. 
